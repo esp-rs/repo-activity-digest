@@ -49,7 +49,7 @@ INDEX_TEMPLATE = """
 
 def main():
     def query_org_repos():
-        r = requests.get(API_URL)
+        r = requests.get(API_URL, params={"per_page": 100})
         urls = [
             j["html_url"] for j in r.json() if not j["private"] and not j["archived"]
         ]
