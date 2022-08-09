@@ -1,6 +1,6 @@
 # repo-activity-digest
 
-Automatically generates HTML digests for all configured repositories using [dinghy](https://github.com/nedbat/dinghy). A workflow runs every day at midnight UTC which generates and deploys the digests. Each digest shows the activity for a repository over the last 7 days.
+Automatically generates HTML digests for all repositories in the `esp-rs` organization (which are **not** private and/or archived) using [dinghy](https://github.com/nedbat/dinghy). A workflow runs every day at midnight UTC which generates and deploys the digests. Each digest shows the activity for a repository over the last 7 days.
 
 ## Quickstart
 
@@ -14,7 +14,7 @@ $ ./generate.py
 $ GITHUB_TOKEN="YOUR-GITHUB-TOKEN" python -m dinghy config.yaml
 ```
 
-This will generate an HTML digest file for each repository listed in the `repositories.yml` file.
+This will generate an HTML digest file for each repository in the `esp-rs` organization, as well as an HTML index linking to each digest.
 
 ## License
 

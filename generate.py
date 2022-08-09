@@ -2,8 +2,11 @@
 
 from datetime import datetime
 
+import requests
 import yaml
 
+
+API_URL = "https://api.github.com/orgs/esp-rs/repos"
 
 INDEX_TEMPLATE = """
 <!DOCTYPE html>
@@ -45,6 +48,13 @@ INDEX_TEMPLATE = """
 
 
 def main():
+    def query_org_repos():
+        r = requests.get(API_URL)
+        urls = [
+            j["html_url"] for j in r.json() if not j["private"] and not j["archived"]
+        ]
+        return sorted(urls)
+
     def build_digest(repo):
         name = repo.split("/")[-1]
         return {"digest": f"{name}.html", "since": "1 week", "items": [repo]}
@@ -57,8 +67,7 @@ def main():
     date = now.strftime("%Y-%m-%d")
     time = now.strftime("%H:%M:%S")
 
-    with open("repositories.yml", "r") as f:
-        repos = yaml.safe_load(f)
+    repos = query_org_repos()
 
     with open("config.yml", "w") as f:
         f.write(f"# Generated on {date} at {time} UTC\n\n")
