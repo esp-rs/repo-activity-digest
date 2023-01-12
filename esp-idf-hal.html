@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<head>
+  <title>Activity since 2023-01-05</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/primer/octicons/main/icons/comment-discussion-24.svg" type="image/svg+xml">
+  <style>
+  body {
+    font-family: sans-serif;
+    max-width: 60em;
+    margin: auto;
+    line-height: 1.3;
+    color: black;
+  }
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  li {
+    margin: 0;
+  }
+  li p {
+    margin: 0;
+  }
+  ul.repos > li {
+    margin-top: 2em;
+  }
+  ul.entries > li {
+    margin-top: 1em;
+  }
+  ul.entries > li > p {
+    margin-left: 4.2em;
+  }
+  ul.entries > li > p:first-child {
+    text-indent: -2.1em;   /* not sure why it's half the 4.2em indent */
+  }
+  ul.comments > li > p {
+    margin-left: 4.2em;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+  }
+  ul.thread_comment ul.thread_comment {
+    padding-left: 1.6em;
+  }
+  ul.thread_comment > li > p {
+    padding-left: 7.3em;
+    text-indent: -1.6em;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #0969da;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .reponame {
+    font-weight: bold;
+    font-size: 150%;
+    margin-right: .5em;
+  }
+  .label {
+    padding: .2em .5em .1em .5em;
+    border-radius: 2em;
+    font-size: 75%;
+    opacity: .85;
+    vertical-align: middle;
+    white-space: nowrap;
+    /* GitHub label style computations, lifted from github.com */
+    border: 1px solid transparent;
+    --perceived-lightness: calc( ((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255 );
+    --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+    --lightness-threshold: 0.453;
+    --border-threshold: 0.96;
+    --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
+    background: rgb(var(--label-r), var(--label-g), var(--label-b));
+    color: hsl(0, 0%, calc(var(--lightness-switch) * 100%));
+    border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) - 25) * 1%), var(--border-alpha));
+  }
+  .homerepo {
+    color: #888;
+  }
+  .old > p {
+    color: #888;
+  }
+  .footer {
+    color: #888;
+    font-style: italic;
+    margin-top: 3em;
+  }
+  .octicons {
+    display: inline-block;
+    padding-right: .3em;
+  }
+  .octicon {
+    width: 1.3em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    padding-bottom: .2em;
+  }
+  .octicon.star {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/star-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.x {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/x-16.svg);
+  
+  }
+  .octicon.check {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-16.svg);
+  
+  }
+  .octicon.checkcircle {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-circle-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment.resolved {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/tasklist-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/comment-16.svg);
+  
+  }
+  .octicon.eye {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/eye-16.svg);
+  
+  }
+  .octicon.filediff {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/file-diff-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.dash {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/dash-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(1.25);
+  
+  }
+  .octicon.pull {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.pull.draft {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-draft-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  .octicon.pull.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.pull.merged {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-merge-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-opened-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.issue.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue.wontdo {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/skip-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  </style>
+<body>
+
+<h1>Activity since 2023-01-05</h1>
+
+<ul class="repos">
+  <li>
+      <p><span class="reponame"><a href="https://github.com/esp-rs/esp-idf-hal">esp-rs/esp-idf-hal</a></span>
+      repo issues and pull requests
+      </p>
+      
+        <ul class="entries">
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-hal/pull/202"><span class="octicons" title="merged pull request, newly merged"><span class="octicon dash"></span><span class="octicon check"></span><span class="octicon merged pull"></span></span><b>Add queue length to CAN config</b> #202</a>
+              [elotom]
+
+              
+              </p><p>It would be nice if we could set a custom tx/rx queues length for CAN. In some cases, the default size of 5 is not enough.</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/pull/202#pullrequestreview-1237331904" title="01-05 12:42">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>MabezDev</b>: Yes the CI is unrelated, the xtensa toolchain action is having some issues at the moment. This...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-hal/issues/201"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Error handling for DMA max transfer size set to 0</b> #201</a>
+              [lonesometraveler]
+
+              
+              </p><p>SpiDriver with a DMA max transfer size of 0 leads to panic.
+let spi_driver =
+            SpiDriver:🆕:&lt;SPI2&gt;(spi,...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/issues/201#issuecomment-1372165370" title="01-05 12:39">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: Ah I understand, apologies for the noise.
+I think this could be a good candidate for...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/issues/201#issuecomment-1372257934" title="01-05 14:07">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>lonesometraveler</b>: Thank you. I like NonZeroUsize idea.
+pub enum Dma {
+    Disabled,
+    Channel1(NonZeroUsize),
+  ...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/issues/201#issuecomment-1373027064" title="01-06 01:42">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: Looks good! Please create the PR :)</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-hal/pull/203"><span class="octicons" title="pull request, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon pull"></span></span><b>Fix issue #201: Use `NonZeroUsize` to specify DMA transfer size</b> #203</a>
+              [lonesometraveler]
+
+              
+              </p><p>I wanted to submit a pull request to change the usage of usize to NonZeroUsize in the DMA channel enum. This fixes...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/pull/203#pullrequestreview-1238917576" title="01-06 14:35">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>MabezDev</b>: Looks good to me, but I&#39;ll get @zRedShift and @ivmarkov&#39;s opinions before changing the public API.</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/pull/203#pullrequestreview-1239450965" title="01-06 21:39">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>zRedShift</b>: LGTM, but if you want to make panics impossible we could create a newtype wrapping...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-hal/pull/52"><span class="octicons" title="closed pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon closed pull"></span></span><b>Pull out shared bus</b> #52</a>
+              [Dominaezzz]
+
+              
+              </p><p>This allows users to create multiple devices on one bus.
+The current SPI interface allows one to create a single...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/pull/52#issuecomment-1375135715" title="01-09 05:57">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>DS3a</b>: @Dominaezzz I&#39;ve been trying to read files from an sd card using esp_rs. I found a bunch of...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-hal/issues/204"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>data loss on 115200 baudrate</b> #204</a>
+              [farbodpm]
+
+              
+              </p><p>I was checking my uart code. I realized that I have data loss over my serial port, I decided to impl uart read using...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/issues/204#issuecomment-1375411984" title="01-09 10:39">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: Here is some prior art that didn&#39;t get merged: #84. I would also take a look at the discussion,...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-hal/issues/204#issuecomment-1375557649" title="01-09 12:29">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>farbodpm</b>: I couldn&#39;t understand the reason that this code didn&#39;t merged. Can you explain the reason?</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-hal/pull/157"><span class="octicons" title="pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon pull"></span></span><b>PCNT implementation for both v4 and v5 esp-idf apis</b> #157</a>
+              [liebman]
+
+              
+              </p><p>Both v4 and v5 APIs are now implemented and its very close to feature complete and probably needs some reviews now....</p></li>
+          </ul>
+      
+    </li>
+  </ul>
+
+<p class="footer">
+  created at 2023-01-12 01:40 by
+  <a href="https://pypi.org/project/dinghy/0.13.1">
+    dinghy
+    <span class="dinghy_version">0.13.1</span></a>.
+</p>

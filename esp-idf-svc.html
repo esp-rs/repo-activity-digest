@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<head>
+  <title>Activity since 2023-01-05</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/primer/octicons/main/icons/comment-discussion-24.svg" type="image/svg+xml">
+  <style>
+  body {
+    font-family: sans-serif;
+    max-width: 60em;
+    margin: auto;
+    line-height: 1.3;
+    color: black;
+  }
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  li {
+    margin: 0;
+  }
+  li p {
+    margin: 0;
+  }
+  ul.repos > li {
+    margin-top: 2em;
+  }
+  ul.entries > li {
+    margin-top: 1em;
+  }
+  ul.entries > li > p {
+    margin-left: 4.2em;
+  }
+  ul.entries > li > p:first-child {
+    text-indent: -2.1em;   /* not sure why it's half the 4.2em indent */
+  }
+  ul.comments > li > p {
+    margin-left: 4.2em;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+  }
+  ul.thread_comment ul.thread_comment {
+    padding-left: 1.6em;
+  }
+  ul.thread_comment > li > p {
+    padding-left: 7.3em;
+    text-indent: -1.6em;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #0969da;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .reponame {
+    font-weight: bold;
+    font-size: 150%;
+    margin-right: .5em;
+  }
+  .label {
+    padding: .2em .5em .1em .5em;
+    border-radius: 2em;
+    font-size: 75%;
+    opacity: .85;
+    vertical-align: middle;
+    white-space: nowrap;
+    /* GitHub label style computations, lifted from github.com */
+    border: 1px solid transparent;
+    --perceived-lightness: calc( ((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255 );
+    --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+    --lightness-threshold: 0.453;
+    --border-threshold: 0.96;
+    --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
+    background: rgb(var(--label-r), var(--label-g), var(--label-b));
+    color: hsl(0, 0%, calc(var(--lightness-switch) * 100%));
+    border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) - 25) * 1%), var(--border-alpha));
+  }
+  .homerepo {
+    color: #888;
+  }
+  .old > p {
+    color: #888;
+  }
+  .footer {
+    color: #888;
+    font-style: italic;
+    margin-top: 3em;
+  }
+  .octicons {
+    display: inline-block;
+    padding-right: .3em;
+  }
+  .octicon {
+    width: 1.3em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    padding-bottom: .2em;
+  }
+  .octicon.star {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/star-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.x {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/x-16.svg);
+  
+  }
+  .octicon.check {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-16.svg);
+  
+  }
+  .octicon.checkcircle {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-circle-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment.resolved {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/tasklist-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/comment-16.svg);
+  
+  }
+  .octicon.eye {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/eye-16.svg);
+  
+  }
+  .octicon.filediff {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/file-diff-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.dash {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/dash-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(1.25);
+  
+  }
+  .octicon.pull {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.pull.draft {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-draft-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  .octicon.pull.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.pull.merged {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-merge-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-opened-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.issue.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue.wontdo {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/skip-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  </style>
+<body>
+
+<h1>Activity since 2023-01-05</h1>
+
+<ul class="repos">
+  <li>
+      <p><span class="reponame"><a href="https://github.com/esp-rs/esp-idf-svc">esp-rs/esp-idf-svc</a></span>
+      repo issues and pull requests
+      </p>
+      
+        <ul class="entries">
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/200"><span class="octicons" title="merged pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon merged pull"></span></span><b>Add IDF 5.0 and xtensa targets to CI</b> #200</a>
+              [usbalbin]
+
+              
+              </p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/200#issuecomment-1371782039" title="01-05 04:58">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: @MabezDev @usbalbin CI fails after this merge. If you could check, thanks.</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/209"><span class="octicons" title="closed pull request, newly created, newly closed"><span class="octicon star"></span><span class="octicon x"></span><span class="octicon closed pull"></span></span><b>Investigate problem after #200</b> #209</a>
+              [usbalbin]
+
+              
+              </p><p>Seems to be some sporadic CI failures after #200 got merged.
+Error seems to be this:
+Install Rust for Xtensa
+Run...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/209#issuecomment-1371833200" title="01-05 06:30">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>usbalbin</b>: @ivmarkov @MabezDev this seems to be very random, this time everything seems to work fine... I...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/209#issuecomment-1371998258" title="01-05 09:50">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: This is a transient failure we&#39;ve being seeing from the xtensa-toolchain action, the failing...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/203"><span class="octicons" title="pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon pull"></span></span><b>added Rust wrapper for IDF esp_ota_get_last_invalid_partition()</b> #203</a>
+              [taunusflieger]
+
+              
+              </p><p>The Rust wrapper for esp_ota_get_last_invalid_partition() is currently missing in esp-idf-svc. This PR adds this...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/203#discussion_r1062412391" title="01-05 12:18">
+                        <span class="octicon filediff" title="reviewed, changes requested"></span>
+                          
+                        
+                        <b>MabezDev</b>: Suggested change
+        
+          
+    
+
+        
+      
+    
+    
+      
+          
+         ...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/203#issuecomment-1373345015" title="01-06 08:31">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>taunusflieger</b>: @MabezDev Thanks!</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-svc/issues/206"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Current nvs_get_blob() based NVS access can&#39;t read NVS partition created with IDF nvs_partition_gen.py</b> #206</a>
+              [taunusflieger]
+
+              
+              </p><p>I use the IDF nvs_partition_gen.py tool to generate the nvs partition content using the following definition...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/issues/206#issuecomment-1374371529" title="01-07 04:09">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: The current ESP Nvs Storage implementation uses a serde scheme which is slightly incompatible...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/issues/206#issuecomment-1374433942" title="01-07 10:28">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>taunusflieger</b>: Thanks for the detailed explanation. Yes I concluded already that the serde serialization...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-svc/issues/211"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Panic on nvs_flash_deinit_partition when NvsCustom is dropped</b> #211</a>
+              [NickUfer]
+
+              
+              </p><p>The following code crashes with error code 4353 (ESP_ERR_NVS_NOT_INITIALIZED)
+fn main() {
+   ...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/issues/211#issuecomment-1374369238" title="01-07 03:57">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: Have you created a custom partition labeled config before trying to use it?</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/issues/211#issuecomment-1374435324" title="01-07 10:38">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>taunusflieger</b>: I&#39;m working successful with custom nvs partitions. You need to define the custom partition in...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/issues/211#issuecomment-1374535712" title="01-07 16:38">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>NickUfer</b>: Thanks for the info that I have to create these tables before usage. I just started programming...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/210"><span class="octicons" title="closed pull request, newly created, newly closed"><span class="octicon star"></span><span class="octicon x"></span><span class="octicon closed pull"></span></span><b>X509 should have same lifetime as MqttClientConfiguration</b> #210</a>
+              [swanandx]
+
+              
+              </p><p>certificates do not need to live for &#39;static lifetime. As other fields like private_key_password live for lifetime...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/210#issuecomment-1373878062" title="01-06 16:43">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: This can only work if you parameterize the MQTT client wrapper over the &#39;a lifetime as well....</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/210#issuecomment-1373885681" title="01-06 16:58">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>swanandx</b>: Hey, yeah that analogy might be wrong haha. I wanted it to have &#39;a lifetime so I can parse them...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/210#issuecomment-1373898767" title="01-06 17:03">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: Hey, yeah that analogy might be wrong haha. I wanted it to have &#39;a lifetime so I can parse them...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/210#issuecomment-1373900972" title="01-06 17:05">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: Of course static-cell will consume spam, but you don&#39;t have a choice with your json spiffs...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/210#issuecomment-1373913802" title="01-06 17:18">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>swanandx</b>: Did you look into static-cell?
+
+I did! it looks like what I was looking for.
+Thanks for your...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/210#issuecomment-1374541742" title="01-07 17:10">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: Np. Feel free to reopen / write an issue request if the static-cell approach does not work for...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208"><span class="octicons" title="pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon pull"></span></span><b>Add EspOta.get_update()</b> #208</a>
+              [Nukesor]
+
+              
+              </p><p>This commit adds the EspOta.get_update() function to improve the ergonomics of implementing OTA update logic.
+The...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1371774652" title="01-05 04:41">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: I&#39;ll inspect upon my return, but something in your arguments sounds fishy anyway (or maybe the...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372012136" title="01-05 10:04">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: You&#39;re right. I overtook the task of updating our firmware version half-way through and I seem...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372029228" title="01-05 10:18">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: I think with the current implementation (or the previous GAT one, if it was correct anyway) you...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372065698" title="01-05 10:58">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: That&#39;s the first possible solution for the problem I proposed.
+This is possible, but it&#39;s really...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372141807" title="01-05 12:13">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: How about we just consume the EspOta struct as soon as the update is started? This would make...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372184773" title="01-05 12:59">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: Well if you have such a large amount of match cases you probably have to split those into...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372202134" title="01-05 13:14">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: One quick qestion:
+Why exactly is the TAKEN lock acquired as soon as EspOta is created?
+Couldn&#39;t...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372211135" title="01-05 13:23">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: fn initiate_update(&amp;mut self) -&gt; Result&lt;&amp;mut Self::Update, Self::Error&gt;;
+-&gt;
+    fn...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372213326" title="01-05 13:25">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: One quick qestion:
+Why exactly is the TAKEN lock acquired as soon as EspOta is created? Couldn&#39;t...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372227002" title="01-05 13:59">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: There can only be one or zero EspOtaUpdate instances (or mut refs) at a time. If you have...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372474199" title="01-05 16:55">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: With this change you just lost the benefit of ensuring - at compile time - that you are having a...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372475779" title="01-05 16:57">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: One more thing: these changes are not backwards compatible (as I asked for in one of my previous...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372868619" title="01-05 22:23">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: In understand that you&#39;re hesitant to change the API in a backward compatible way that breaks a...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372843299" title="01-05 22:24">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: With this change you just lost the benefit of ensuring - at compile time - that you are having a...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1372874137" title="01-05 22:29">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: One thing that should be addressed under all circumstances, is that a null pointer can be...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1373436228" title="01-06 10:17">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: OK. I&#39;ve written detailed justifications below why I&#39;m not OK with your proposal. I&#39;ll...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1373437938" title="01-06 10:41">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>ivmarkov</b>: One thing that should be addressed under all circumstances, is that a null pointer can be...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-idf-svc/pull/208#issuecomment-1377961505" title="01-10 22:11">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Nukesor</b>: First of all, I&#39;m sorry for disturbing your holiday!
+Your last post was indeed the missing piece...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          </ul>
+      
+    </li>
+  </ul>
+
+<p class="footer">
+  created at 2023-01-12 01:40 by
+  <a href="https://pypi.org/project/dinghy/0.13.1">
+    dinghy
+    <span class="dinghy_version">0.13.1</span></a>.
+</p>

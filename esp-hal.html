@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<head>
+  <title>Activity since 2023-01-05</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/primer/octicons/main/icons/comment-discussion-24.svg" type="image/svg+xml">
+  <style>
+  body {
+    font-family: sans-serif;
+    max-width: 60em;
+    margin: auto;
+    line-height: 1.3;
+    color: black;
+  }
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  li {
+    margin: 0;
+  }
+  li p {
+    margin: 0;
+  }
+  ul.repos > li {
+    margin-top: 2em;
+  }
+  ul.entries > li {
+    margin-top: 1em;
+  }
+  ul.entries > li > p {
+    margin-left: 4.2em;
+  }
+  ul.entries > li > p:first-child {
+    text-indent: -2.1em;   /* not sure why it's half the 4.2em indent */
+  }
+  ul.comments > li > p {
+    margin-left: 4.2em;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+  }
+  ul.thread_comment ul.thread_comment {
+    padding-left: 1.6em;
+  }
+  ul.thread_comment > li > p {
+    padding-left: 7.3em;
+    text-indent: -1.6em;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #0969da;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .reponame {
+    font-weight: bold;
+    font-size: 150%;
+    margin-right: .5em;
+  }
+  .label {
+    padding: .2em .5em .1em .5em;
+    border-radius: 2em;
+    font-size: 75%;
+    opacity: .85;
+    vertical-align: middle;
+    white-space: nowrap;
+    /* GitHub label style computations, lifted from github.com */
+    border: 1px solid transparent;
+    --perceived-lightness: calc( ((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255 );
+    --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+    --lightness-threshold: 0.453;
+    --border-threshold: 0.96;
+    --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
+    background: rgb(var(--label-r), var(--label-g), var(--label-b));
+    color: hsl(0, 0%, calc(var(--lightness-switch) * 100%));
+    border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) - 25) * 1%), var(--border-alpha));
+  }
+  .homerepo {
+    color: #888;
+  }
+  .old > p {
+    color: #888;
+  }
+  .footer {
+    color: #888;
+    font-style: italic;
+    margin-top: 3em;
+  }
+  .octicons {
+    display: inline-block;
+    padding-right: .3em;
+  }
+  .octicon {
+    width: 1.3em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    padding-bottom: .2em;
+  }
+  .octicon.star {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/star-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.x {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/x-16.svg);
+  
+  }
+  .octicon.check {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-16.svg);
+  
+  }
+  .octicon.checkcircle {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-circle-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment.resolved {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/tasklist-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/comment-16.svg);
+  
+  }
+  .octicon.eye {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/eye-16.svg);
+  
+  }
+  .octicon.filediff {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/file-diff-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.dash {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/dash-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(1.25);
+  
+  }
+  .octicon.pull {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.pull.draft {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-draft-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  .octicon.pull.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.pull.merged {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-merge-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-opened-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.issue.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue.wontdo {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/skip-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  </style>
+<body>
+
+<h1>Activity since 2023-01-05</h1>
+
+<ul class="repos">
+  <li>
+      <p><span class="reponame"><a href="https://github.com/esp-rs/esp-hal">esp-rs/esp-hal</a></span>
+      repo issues and pull requests
+      </p>
+      
+        <ul class="entries">
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/329"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Support for different crystal clock frequencies available?</b> #329</a>
+              [rdewaele]
+
+              <span class="label" style="--label-r:216;--label-g:118;--label-b:227;--label-h:293;--label-s:66;--label-l:67;">question</span>
+                
+              </p><p>I would like to share that I am taking my first steps in Rust and ESP development. If this report is out of place, I...</p></li>
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/332"><span class="octicons" title="closed issue, newly closed"><span class="octicon dash"></span><span class="octicon check"></span><span class="octicon closed issue"></span></span><b>GPIO incorrect interrupt status for pins &gt; 32</b> #332</a>
+              [MabezDev]
+
+              <span class="label" style="--label-r:215;--label-g:58;--label-b:74;--label-h:353;--label-s:66;--label-l:53;">bug</span>
+                
+              </p><p>For pins &gt; 32, the interrupt status-related methods fail. This is because the access methods only return a u32, see...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/332#issuecomment-1372426696" title="01-05 16:15">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: Maybe u64 might be cutting it close too: https://www.espressif.com.cn/en/news/ESP32-P4 getting...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/335"><span class="octicons" title="merged pull request, newly created, newly merged"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon merged pull"></span></span><b>Fix GPIO interrupts for pins &gt; 31</b> #335</a>
+              [bjoernQ]
+
+              
+              </p><p>Fixes #332
+Took me a bit too long because I fell into a &#34;generics&#34; rabbit-hole</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/335#pullrequestreview-1238751681" title="01-06 11:57">
+                        <span class="octicon filediff" title="reviewed, changes requested"></span>
+                          
+                        
+                        <b>MabezDev</b>: Took me a bit too long because I fell into a &#34;generics&#34; rabbit-hole
+
+We&#39;ve all been there :D.</a></p>
+                      
+                        <ul class="thread_comment"><li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/335#discussion_r1063379684" title="01-06 11:57">
+                        
+                          <span class="octicon comment resolved" title="resolved comment"></span>
+                        
+                        <b>MabezDev</b>: Is the ira field needed? Looks like the usage doesn&#39;t require self so it can just be called with...</a></p>
+                      
+                        <ul class="thread_comment"><li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/335#discussion_r1063384412" title="01-06 12:03">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>bjoernQ</b>: I think PhantomData should be enough - also for reg_access ... I assumed it&#39;s zero-sized in both...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/335#discussion_r1063394076" title="01-06 12:21">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>bjoernQ</b>: ah I see BankGpioRegisterAccess trait functions take &amp;self but for no reason</a></p>
+                      
+                    </li>
+                  </ul>
+                      
+                    </li>
+                  </ul>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/335#pullrequestreview-1238793870" title="01-06 12:44">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>MabezDev</b>: Thanks for fixing this. LGTM!</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/219"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Add support for the ESP32-C6</b> #219</a>
+              [jessebraham]
+
+              <span class="label" style="--label-r:217;--label-g:63;--label-b:11;--label-h:15;--label-s:90;--label-l:44;">chip support</span>
+                
+              </p><p>I&#39;ll be taking care of this (possibly in collaboration with some colleague(s)), and this likely won&#39;t happen for at...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/219#issuecomment-1374281187" title="01-07 00:06">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>jessebraham</b>: Had to step away from this one for awhile for various reasons, but I&#39;ve picked it back up. All...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/339"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>consider re-exporting Peripheral</b> #339</a>
+              [liebman]
+
+              
+              </p><p>Use case here is I&#39;m making an encoder example for PCNT. I need to pass two pins to the new method and the new...</p></li>
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/336"><span class="octicons" title="closed issue, newly created, newly closed"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon closed issue"></span></span><b>embassy_hello_world panics due to cfg</b> #336</a>
+              [Andrew-Collins]
+
+              
+              </p><p>While working off the embassy_hello_world example for esp32_hal, I noticed that the #[cfg(feature =...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/336#issuecomment-1373581628" title="01-06 12:50">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: The embassy example only compiles when using the embassy-time-timg0 feature, but it is not a...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/336#issuecomment-1374437887" title="01-07 11:15">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Andrew-Collins</b>: Running the embassy_hello_world example code in it&#39;s own crate causes the panic as well. I moved...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/336#issuecomment-1374480101" title="01-07 13:22">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: If embassy-time-timg0 feature is not passed then embassy::init will not run, so what&#39;s your full...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/336#issuecomment-1374648184" title="01-07 23:45">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Andrew-Collins</b>: Repo can be found here: https://github.com/Andrew-Collins/embassy_example
+Cargo.toml...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/336#issuecomment-1374660198" title="01-08 00:00">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: Build command is: caro run --release (running in debug also panics)
+
+This is the issue, you need...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/336#issuecomment-1374667072" title="01-08 00:21">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Andrew-Collins</b>: Thanks for clearing that up.
+So when running the example from the the esp32-hal crate...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/336#issuecomment-1374667360" title="01-08 00:22">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Andrew-Collins</b>: Closing, hopefully this issue also helps someone who does the same thing as I did. :)
+Thanks for...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/340"><span class="octicons" title="closed issue, newly created, newly closed"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon closed issue"></span></span><b>Docs failing for `esp-common-hal`</b> #340</a>
+              [elpiel]
+
+              
+              </p><p>esp-hal-common last build - https://docs.rs/crate/esp-hal-common/0.4.0/builds/699614, fails with:
+[INFO] [stderr]  ...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/340#issuecomment-1374859134" title="01-08 15:13">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>jessebraham</b>: This is expected, without specifying a chip (and some other features) the crate will not build....</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/341"><span class="octicons" title="draft pull request, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon draft pull"></span></span><b>Add `TWAI` support for ESP32 and ESP32-S2</b> #341</a>
+              [jessebraham]
+
+              
+              </p><p>While this builds, unfortunately I have not yet gotten it to actually work. Just opening a draft in case somebody...</p></li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/342"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Document how to estimate the size of DMA descriptor arrays</b> #342</a>
+              [bjoernQ]
+
+              <span class="label" style="--label-r:0;--label-g:117;--label-b:202;--label-h:205;--label-s:100;--label-l:39;">documentation</span>
+                
+              </p><p>it&#39;s not clear to users how to size the dma descriptor array - add some documentation how to calculate the size</p></li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/333"><span class="octicons" title="draft pull request, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon draft pull"></span></span><b>Async: GPIO</b> #333</a>
+              [MabezDev]
+
+              
+              </p><p>Upgrade to new eha
+Implement Wait for GpioPin
+Add an example for C3
+
+TODO
+
+ Add examples for all chips
+ Make the...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/333#discussion_r1064485042" title="01-09 10:29">
+                        
+                            <span class="octicon eye" title="reviewed"></span>
+                          
+                        
+                        <b>MabezDev</b>: Oops, this should be Bank0GpioRegisterAccess</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/328"><span class="octicons" title="pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon pull"></span></span><b>pulse counter implementation</b> #328</a>
+              [liebman]
+
+              
+              </p><p>This is complete. I implemented this following LEDC as a guide and I&#39;m not completely happy with the resulting API. ...</p></li>
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/258"><span class="octicons" title="closed issue, newly closed"><span class="octicon dash"></span><span class="octicon check"></span><span class="octicon closed issue"></span></span><b>Our current approach to CI is not scalable</b> #258</a>
+              [jessebraham]
+
+              <span class="label" style="--label-r:240;--label-g:221;--label-b:116;--label-h:50;--label-s:80;--label-l:69;">CI</span>
+                
+              </p><p>The jobs we&#39;re running in CI have already exploded in numbers, and this problem is only going to be amplified as we...</p></li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/343"><span class="octicons" title="merged pull request, newly created, newly merged"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon merged pull"></span></span><b>Rework the CI workflow</b> #343</a>
+              [jessebraham]
+
+              
+              </p><p>I&#39;ve pretty much completely rewritten this workflow from scratch. Rather than the insane level of concurrency we...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/343#pullrequestreview-1240813994" title="01-09 16:44">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>MabezDev</b>: Awesome work! This is a much better way of doing this. Great catch on the other image formats too.
+LGTM!</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/343#pullrequestreview-1240814746" title="01-09 16:44">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>bjoernQ</b>: LGTM - I really like it</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/338"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Docs failing for s2</b> #338</a>
+              [MabezDev]
+
+              <span class="label" style="--label-r:215;--label-g:58;--label-b:74;--label-h:353;--label-s:66;--label-l:53;">bug</span>
+                <span class="label" style="--label-r:0;--label-g:117;--label-b:202;--label-h:205;--label-s:100;--label-l:39;">documentation</span>
+                
+              </p><p>https://docs.rs/crate/esp32s2-hal/latest shows the missing docs :(</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/338#issuecomment-1376166347" title="01-09 19:24">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>jessebraham</b>: Here&#39;s the command that&#39;s run by the build on docs.rs:
+docker create \
+    -v...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/337"><span class="octicons" title="merged pull request, newly created, newly merged"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon merged pull"></span></span><b>Remove the signals from the GPIO structs</b> #337</a>
+              [MabezDev]
+
+              
+              </p><p>Instead have a signals struct which can access the signals when needed. This makes the GPIO structs zero-sized :).
+I...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/337#pullrequestreview-1239054112" title="01-06 16:14">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>bjoernQ</b>: LGTM - good idea! 👍</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/337#pullrequestreview-1239054759" title="01-06 16:15">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>jessebraham</b>: LGTM</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/334"><span class="octicons" title="merged pull request, newly created, newly merged"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon merged pull"></span></span><b>Finish PeripheralRef</b> #334</a>
+              [MabezDev]
+
+              
+              </p><p>Remove the mixed pac and generated peripherals instead, all are generated.</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/334#pullrequestreview-1238463938" title="01-06 07:18">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>bjoernQ</b>: LGTM</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/pull/334#pullrequestreview-1238706123" title="01-06 11:18">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>JurajSadel</b>: LGTM!</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/323"><span class="octicons" title="merged pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon merged pull"></span></span><b>Peripheral ref/gpio</b> #323</a>
+              [MabezDev]
+
+              
+              </p><p>The final update in this conversion step.
+A couple of things had to change to get this working:
+
+I2S pin structs now...</p></li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/314"><span class="octicons" title="merged pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon merged pull"></span></span><b>PeripheralRef: MCPWM</b> #314</a>
+              [MabezDev]
+
+              
+              </p></li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/309"><span class="octicons" title="merged pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon merged pull"></span></span><b>Completely remove pac references in hal drivers</b> #309</a>
+              [MabezDev]
+
+              
+              </p><p>It was easy to use the wrong type when writing a driver in esp-hal-common
+Now the pac is completely hidden, but its...</p></li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/307"><span class="octicons" title="merged pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon merged pull"></span></span><b>PeripheralRef: LEDC</b> #307</a>
+              [MabezDev]
+
+              
+              </p></li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/302"><span class="octicons" title="merged pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon merged pull"></span></span><b>Peripheral ref/systimer</b> #302</a>
+              [MabezDev]
+
+              
+              </p></li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/299"><span class="octicons" title="merged pull request"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon merged pull"></span></span><b>PeripheralRef/spi</b> #299</a>
+              [MabezDev]
+
+              
+              </p><p>The second driver to be converted to the new PeripheralRef format.
+Hopefully, this should be a better reference than...</p></li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/19"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Track peripheral driver implementations for all chips</b> #19</a>
+              [jessebraham]
+
+              <span class="label" style="--label-r:0;--label-g:134;--label-b:114;--label-h:171;--label-s:100;--label-l:26;">help wanted</span>
+                
+              </p><p>The table below enumerates all peripherals for each chip supported by esp-hal. Support in this case does not mean a...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/19#issuecomment-1373610316" title="01-06 13:15">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>akashlama1998-icloud</b>: No AES, RSA and I guess secure boot as well that means it&#39;s not production ready yet 😔. It&#39;s...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/19#issuecomment-1373614294" title="01-06 13:18">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: I&#39;m eagerly for the project to be stable and when I search for esp rs or esp for rust the...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/19#issuecomment-1374852547" title="01-08 14:43">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>MabezDev</b>: They were marked as off-topic because they are off-topic for a tracking issue thread. Many...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/19#issuecomment-1374792922" title="01-08 18:26">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>akashlama1998-icloud</b>: Lack of documentation I get it. But SECURE BOOT for esp32 in rust how can this be off topic....</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/19#issuecomment-1374897804" title="01-08 18:27">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>akashlama1998-icloud</b>: Ok.. I&#39;ll do so..</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/19#issuecomment-1377533395" title="01-10 16:32">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>matrixhead</b>: i would like to work on AES in esp32</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/issues/295"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Crash when using SpiDevice::write (Because of a hidden alignment requirement)</b> #295</a>
+              [mlthlschr]
+
+              <span class="label" style="--label-r:215;--label-g:58;--label-b:74;--label-h:353;--label-s:66;--label-l:53;">bug</span>
+                
+              </p><p>Hi, I am trying to write a small driver for an SPI device with registers. For that, I have the following function to...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-hal/issues/295#issuecomment-1378964055" title="01-11 15:34">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>i404788</b>: TL;DR: core::intrinsics::volatile_copy_nonoverlapping_memory::&lt;u32&gt; (and all it&#39;s variants) are...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-hal/pull/344"><span class="octicons" title="merged pull request, newly created, newly merged"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon merged pull"></span></span><b>Update `xtensa-toolchain`</b> #344</a>
+              [jessebraham]
+
+              
+              </p></li>
+          </ul>
+      
+    </li>
+  </ul>
+
+<p class="footer">
+  created at 2023-01-12 01:40 by
+  <a href="https://pypi.org/project/dinghy/0.13.1">
+    dinghy
+    <span class="dinghy_version">0.13.1</span></a>.
+</p>
