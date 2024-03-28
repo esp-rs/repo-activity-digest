@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<head>
+  <title>Activity since 2024-03-21</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/primer/octicons/main/icons/comment-discussion-24.svg" type="image/svg+xml">
+  <style>
+  body {
+    font-family: sans-serif;
+    max-width: 60em;
+    margin: auto;
+    line-height: 1.3;
+    color: black;
+  }
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  li {
+    margin: 0;
+  }
+  li p {
+    margin: 0;
+  }
+  ul.repos > li {
+    margin-top: 2em;
+  }
+  ul.entries > li {
+    margin-top: 1em;
+  }
+  ul.entries > li > p {
+    margin-left: 4.2em;
+  }
+  ul.entries > li > p:first-child {
+    text-indent: -2.1em;   /* not sure why it's half the 4.2em indent */
+  }
+  ul.comments > li > p {
+    margin-left: 4.2em;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+  }
+  ul.thread_comment ul.thread_comment {
+    padding-left: 1.6em;
+  }
+  ul.thread_comment > li > p {
+    padding-left: 7.3em;
+    text-indent: -1.6em;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #0969da;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .reponame {
+    font-weight: bold;
+    font-size: 150%;
+    margin-right: .5em;
+  }
+  .label {
+    padding: .2em .5em .1em .5em;
+    border-radius: 2em;
+    font-size: 75%;
+    opacity: .85;
+    vertical-align: middle;
+    white-space: nowrap;
+    /* GitHub label style computations, lifted from github.com */
+    border: 1px solid transparent;
+    --perceived-lightness: calc( ((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255 );
+    --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+    --lightness-threshold: 0.453;
+    --border-threshold: 0.96;
+    --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
+    background: rgb(var(--label-r), var(--label-g), var(--label-b));
+    color: hsl(0, 0%, calc(var(--lightness-switch) * 100%));
+    border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) - 25) * 1%), var(--border-alpha));
+  }
+  .homerepo {
+    color: #888;
+  }
+  .old > p {
+    color: #888;
+  }
+  .footer {
+    color: #888;
+    font-style: italic;
+    margin-top: 3em;
+  }
+  .octicons {
+    display: inline-block;
+    padding-right: .3em;
+  }
+  .octicon {
+    width: 1.3em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    padding-bottom: .2em;
+  }
+  .octicon.star {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/star-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.x {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/x-16.svg);
+  
+  }
+  .octicon.check {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-16.svg);
+  
+  }
+  .octicon.checkcircle {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-circle-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment.resolved {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/tasklist-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/comment-16.svg);
+  
+  }
+  .octicon.eye {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/eye-16.svg);
+  
+  }
+  .octicon.filediff {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/file-diff-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.dash {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/dash-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(1.25);
+  
+  }
+  .octicon.pull {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.pull.draft {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-draft-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  .octicon.pull.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.pull.merged {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-merge-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-opened-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.issue.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue.wontdo {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/skip-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  </style>
+<body>
+
+<h1>Activity since 2024-03-21</h1>
+
+<ul class="repos">
+  <li>
+      <p><span class="reponame"><a href="https://github.com/esp-rs/esp-template">esp-rs/esp-template</a></span>
+      repo issues and pull requests
+      </p>
+      
+        <ul class="entries">
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/esp-template/issues/125"><span class="octicons" title="closed issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon closed issue"></span></span><b>Trouble running ESP32-C6 template</b> #125</a>
+              [nbigaouette]
+
+              
+              </p><p>Got my hands on an ESP32-C6 and want to try rust on it. I am able to run the esp-idf examples (hello_world and...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/125#issuecomment-2016799929" title="03-24 12:51">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>gintsgints</b>: With newer versions there is special option to print to jtag port. You should enable that...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/esp-template/issues/151"><span class="octicons" title="closed issue, newly created, newly closed"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon closed issue"></span></span><b>Binary name not correct in `wokwi.toml`.</b> #151</a>
+              [hlf20010508]
+
+              
+              </p><p>In wokwi.toml, it uses crate_name as binary name.
+But in Cargo.toml, it uses project-name.
+This results in file not...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/151#issuecomment-2016460984" title="03-23 11:30">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: I guess that we should use {{project-name}} instead of  {{crate_name}, if you&#39;d like to open a...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/151#issuecomment-2016467004" title="03-23 11:50">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>hlf20010508</b>: Ok, I&#39;ve opened a PR #152.</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="">
+
+              <p><a href="https://github.com/esp-rs/esp-template/pull/152"><span class="octicons" title="merged pull request, newly created, newly merged"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon merged pull"></span></span><b>fix: file name not correct in wokwi.toml (#151)</b> #152</a>
+              [hlf20010508]
+
+              
+              </p><p>Use {{project-name}} instead of {{crate_name}} in wokwi.toml.</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/pull/152#pullrequestreview-1957048437" title="03-25 07:50">
+                        <span class="octicon checkcircle" title="reviewed, approved"></span>
+                          
+                        
+                        <b>SergioGasquez</b>: LGTM! Thanks for the contribution!</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/esp-template/issues/153"><span class="octicons" title="closed issue, newly created, newly closed"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon closed issue"></span></span><b>Porting a esp-hal example to a standalone esp-template generated repo?</b> #153</a>
+              [brainstorm]
+
+              
+              </p><p>Hello!
+I was trying to have one of the great embassy esp-hal examples from esp-hal as a standalone project that I...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017428482" title="03-25 08:07">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: As mentioned in esp-rs/esp-hal#1336 (comment), looks like you are missing some...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017506563" title="03-25 09:01">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>brainstorm</b>: @SergioGasquez Not the same issue, here&#39;s my...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017530381" title="03-25 09:13">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>bjoernQ</b>: There is something strange going on.
+-nostartfiles should only get added to .cargo/config.toml...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017574357" title="03-25 09:36">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>brainstorm</b>: Since I cannot tell if the last question is aimed at me, I re-did the steps above just in case...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017604341" title="03-25 09:48">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>bjoernQ</b>: I&#39;m not able to reproduce it given the steps above. But since it seems cargo is picking up...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017617892" title="03-25 09:55">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>bjoernQ</b>: Maybe the output of cargo -Z unstable-options config get might help</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017624687" title="03-25 09:59">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>brainstorm</b>: cargo -Z unstable-options config get
+
+Thanks @bjoernQ, here it is:
+$ cargo -Z unstable-options...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017640052" title="03-25 10:07">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>bjoernQ</b>: Just for reference this is what the effective config looks for me
+❯ cargo -Z unstable-options...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/esp-template/issues/153#issuecomment-2017651375" title="03-25 10:13">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>brainstorm</b>: Aha! Thanks so much, there was this remaining .cargo leftover from a previous template...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-template/issues/155"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Why does esp-template use v0.2.7 of embedded-hal instead of expected v1.0.0?</b> #155</a>
+              [henryshunt]
+
+              
+              </p><p>If I create a new project for the ESP32-S3 using cargo generate esp-rs/esp-template and run cargo tree, I see...</p></li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/esp-template/issues/156"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Not able to build</b> #156</a>
+              [MohaBeacon]
+
+              
+              </p><p>error: the &#39;cargo&#39; binary, normally provided by the &#39;cargo&#39; component, is not applicable to the...</p></li>
+          </ul>
+      
+    </li>
+  </ul>
+
+<p class="footer">
+  created at 2024-03-28 01:13 by
+  <a href="https://pypi.org/project/dinghy/0.13.1">
+    dinghy
+    <span class="dinghy_version">0.13.1</span></a>.
+</p>

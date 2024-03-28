@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<head>
+  <title>Activity since 2024-03-21</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/primer/octicons/main/icons/comment-discussion-24.svg" type="image/svg+xml">
+  <style>
+  body {
+    font-family: sans-serif;
+    max-width: 60em;
+    margin: auto;
+    line-height: 1.3;
+    color: black;
+  }
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  li {
+    margin: 0;
+  }
+  li p {
+    margin: 0;
+  }
+  ul.repos > li {
+    margin-top: 2em;
+  }
+  ul.entries > li {
+    margin-top: 1em;
+  }
+  ul.entries > li > p {
+    margin-left: 4.2em;
+  }
+  ul.entries > li > p:first-child {
+    text-indent: -2.1em;   /* not sure why it's half the 4.2em indent */
+  }
+  ul.comments > li > p {
+    margin-left: 4.2em;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+  }
+  ul.thread_comment ul.thread_comment {
+    padding-left: 1.6em;
+  }
+  ul.thread_comment > li > p {
+    padding-left: 7.3em;
+    text-indent: -1.6em;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #0969da;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .reponame {
+    font-weight: bold;
+    font-size: 150%;
+    margin-right: .5em;
+  }
+  .label {
+    padding: .2em .5em .1em .5em;
+    border-radius: 2em;
+    font-size: 75%;
+    opacity: .85;
+    vertical-align: middle;
+    white-space: nowrap;
+    /* GitHub label style computations, lifted from github.com */
+    border: 1px solid transparent;
+    --perceived-lightness: calc( ((var(--label-r) * 0.2126) + (var(--label-g) * 0.7152) + (var(--label-b) * 0.0722)) / 255 );
+    --lightness-switch: max(0, min(calc((var(--perceived-lightness) - var(--lightness-threshold)) * -1000), 1));
+    --lightness-threshold: 0.453;
+    --border-threshold: 0.96;
+    --border-alpha: max(0, min(calc((var(--perceived-lightness) - var(--border-threshold)) * 100), 1));
+    background: rgb(var(--label-r), var(--label-g), var(--label-b));
+    color: hsl(0, 0%, calc(var(--lightness-switch) * 100%));
+    border-color: hsla(var(--label-h), calc(var(--label-s) * 1%), calc((var(--label-l) - 25) * 1%), var(--border-alpha));
+  }
+  .homerepo {
+    color: #888;
+  }
+  .old > p {
+    color: #888;
+  }
+  .footer {
+    color: #888;
+    font-style: italic;
+    margin-top: 3em;
+  }
+  .octicons {
+    display: inline-block;
+    padding-right: .3em;
+  }
+  .octicon {
+    width: 1.3em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    padding-bottom: .2em;
+  }
+  .octicon.star {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/star-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.x {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/x-16.svg);
+  
+  }
+  .octicon.check {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-16.svg);
+  
+  }
+  .octicon.checkcircle {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/check-circle-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment.resolved {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/tasklist-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.comment {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/comment-16.svg);
+  
+  }
+  .octicon.eye {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/eye-16.svg);
+  
+  }
+  .octicon.filediff {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/file-diff-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.dash {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/dash-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(1.25);
+  
+  }
+  .octicon.pull {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.pull.draft {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-draft-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  .octicon.pull.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-pull-request-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(316deg) saturate(6) brightness(.8);
+  
+  }
+  .octicon.pull.merged {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/git-merge-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-opened-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(98deg) saturate(8) brightness(0.5);
+  
+  }
+  .octicon.issue.closed {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/issue-closed-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(220deg) saturate(8) brightness(.65);
+  
+  }
+  .octicon.issue.wontdo {
+    background-image: url(https://raw.githubusercontent.com/primer/octicons/main/icons/skip-16.svg);
+  filter: invert(1) brightness(.5) sepia(1) hue-rotate(172deg) saturate(0.43) brightness(0.65);
+  
+  }
+  </style>
+<body>
+
+<h1>Activity since 2024-03-21</h1>
+
+<ul class="repos">
+  <li>
+      <p><span class="reponame"><a href="https://github.com/esp-rs/espflash">esp-rs/espflash</a></span>
+      repo issues and pull requests
+      </p>
+      
+        <ul class="entries">
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/espflash/issues/618"><span class="octicons" title="closed issue, newly created, newly closed"><span class="octicon star"></span><span class="octicon check"></span><span class="octicon closed issue"></span></span><b>`espflash` doesn&#39;t have `--log-format` argument</b> #618</a>
+              [HaoboGu]
+
+              
+              </p><p>Hello! I&#39;m trying to use espflash together with defmt, espflash&#39;s doc says there&#39;s an argument --log-format:...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/618#issuecomment-2016754495" title="03-24 09:51">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>HaoboGu</b>: v3.0.0 works, closing</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/espflash/issues/617"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>`image_too_big` error when using espflash v3.0.0</b> #617</a>
+              [armandas]
+
+              
+              </p><p>I tried to upgrade to v3.0.0, but it produces the following error:
+[2024-03-20T08:04:58Z INFO ] Serial port:...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/617#issuecomment-2017493278" title="03-25 08:51">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: Hi! Mind giving some more details?  Are you using espflash or cargo-espflash? Is it a std or...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/617#issuecomment-2018002687" title="03-25 13:24">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>armandas</b>: Sure. I am using the espflash command, as described here. My project is using std, but how does...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/617#issuecomment-2018026704" title="03-25 13:37">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>armandas</b>: Also just want to add that I haven&#39;t explicitly configured the partitions, but V2 tool had no...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/espflash/issues/615"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>Error: espflash::connection_failed</b> #615</a>
+              [antonsterkhov]
+
+              
+              </p><p>Error
+Finished dev [optimized + debuginfo] target(s) in 0.30s
+Running espflash flash --monitor...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/615#issuecomment-2017688865" title="03-25 10:34">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: Maybe we can try connecting without resetting: Can you try using -b no-reset?</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/615#issuecomment-2018139407" title="03-25 14:46">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>antonsterkhov</b>: Maybe we can try connecting without resetting: Can you try using -b no-reset?
+
+I tried it on the...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/615#issuecomment-2018291760" title="03-25 15:33">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>antonsterkhov</b>: I think there is a reason that it does not load in version 3, on the M5 atom there is an...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/espflash/issues/616"><span class="octicons" title="issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>v3 Error while connecting to esp32</b> #616</a>
+              [owenthewizard]
+
+              
+              </p><p>Flashing a WT32-ETH01, v2 flashes fine and reports:
+Chip type:         esp32 (revision v1.0)
+Crystal frequency:...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/616#issuecomment-2017495936" title="03-25 08:53">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: Sorry for the inconvenience, the dpaste looks like it has expired, mind pasting the logs here? ...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/616#issuecomment-2017600370" title="03-25 09:46">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>birkenfeld</b>: I had the same problem - turns out since I don&#39;t have RTS/DTR pins connected and pulled IO0 low...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/616#issuecomment-2017636870" title="03-25 10:05">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: I had the same problem - turns out since I don&#39;t have RTS/DTR pins connected and pulled IO0 low...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/616#issuecomment-2017648441" title="03-25 10:11">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>birkenfeld</b>: I guess your scenario was different, since using espflash v2 didn&#39;t work either, right?
+
+No, it...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/616#issuecomment-2017685887" title="03-25 10:32">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: No, it worked fine. AFAICS v2 doesn&#39;t have a before-reset option, so probably it didn&#39;t try to...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/616#issuecomment-2018638217" title="03-25 18:24">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>owenthewizard</b>: No, it worked fine. AFAICS v2 doesn&#39;t have a before-reset option, so probably it didn&#39;t try to...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/616#issuecomment-2019485118" title="03-26 06:19">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>birkenfeld</b>: While mine does have RTS and CTS, it doesn&#39;t have DTR which I understand would be necessary to...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/616#issuecomment-2019487600" title="03-26 06:22">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>birkenfeld</b>: Scratch that, there also needs to be one for actually resetting the board...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/espflash/issues/620"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>CORE Board ESP32 Super Mini - Failed to connect to on-device flash</b> #620</a>
+              [Kezii]
+
+              
+              </p><p>espflash fails with the esp32-c3 super mini board
+
+[...]
+[2024-03-25T22:52:07Z DEBUG] Finish stub...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/620#issuecomment-2019872368" title="03-26 09:02">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: Can you try using --no-stub?</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/620#issuecomment-2020140387" title="03-26 11:08">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Kezii</b>: that does not seem to make a difference
+[...]
+[2024-03-26T11:07:33Z INFO ] Serial port:...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/espflash/issues/621"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>[ESP32-S2] Not able to monitor device after flashing - device not booting properly</b> #621</a>
+              [italicmew]
+
+              
+              </p><p>I am currently attempting to flash my ESP-32-s2 device using the esp-template and espflash tool. However, I am...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/621#issuecomment-2019107151" title="03-25 23:36">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>italicmew</b>: Running the same thing on a normal esp-32 seems to work fine with exactly same setup.
+ESP32...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/621#issuecomment-2019933777" title="03-26 09:32">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: Just to confirm, you are pressing Ctrl + R after the flashing has completed, right?
+esptool is...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/621#issuecomment-2020191194" title="03-26 11:36">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>italicmew</b>: Hey @SergioGasquez, thanks for the quick reply!
+1 - In the attempt mentioned above, I pressed...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/621#issuecomment-2020199879" title="03-26 11:42">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Vollbrecht</b>: I am not sure how its done in the no_std template, but the s2 is a bit special - e.g it can use...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/621#issuecomment-2020202261" title="03-26 11:43">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Vollbrecht</b>: on esp-idf-template based project you need to set usb-cdc manually to be used via a sdkconfig...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/621#issuecomment-2021453347" title="03-26 20:53">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>italicmew</b>: @Vollbrecht Are you referring to this esp usb doc, right?
+I was able to make the...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/621#issuecomment-2021489554" title="03-26 21:17">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>Vollbrecht</b>: I assume that not initiating the usb-cdc in some form on the no_std binary may be the problem...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/621#issuecomment-2021544421" title="03-26 21:59">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: We have an usb cdc example in esp-hal, see...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="open">
+
+              <p><a href="https://github.com/esp-rs/espflash/issues/619"><span class="octicons" title="issue, newly created"><span class="octicon star"></span><span class="octicon dash"></span><span class="octicon issue"></span></span><b>invalid stub handshake response received</b> #619</a>
+              [sakuwa]
+
+              
+              </p><p>Hello
+i got the following issue:
+[2024-03-25T15:55:55Z INFO ] Serial port: &#39;COM5&#39;
+[2024-03-25T15:55:55Z INFO ]...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/619#issuecomment-2019021595" title="03-25 22:27">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>beeb</b>: Can confirm, same issue here (windows, cargo-espflash 3.0.0). I didn&#39;t adjust the config from...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/619#issuecomment-2019945720" title="03-26 09:38">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: Hi! Mind trying to use the --no-stub flag?
+
+Note that the board has a 26MHz crystal and...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/619#issuecomment-2020194489" title="03-26 11:38">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>sakuwa</b>: yeah after some more try and errors and short reading (stub is a kind of a bootloader?)...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/619#issuecomment-2020260509" title="03-26 12:09">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: Could you try using this branch...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/619#issuecomment-2020841781" title="03-26 16:05">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>sakuwa</b>: i got a few timeout notification but it seems to work. No handshake error or need to set the...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/619#issuecomment-2021191445" title="03-26 18:31">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>SergioGasquez</b>: i got a few timeout notification but it seems to work. No handshake error or need to set the...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/619#issuecomment-2021287056" title="03-26 19:20">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>beeb</b>: Hey @SergioGasquez thanks for looking into it. I can confirm that with the stable release and...</a></p>
+                      
+                    </li>
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/619#issuecomment-2022198370" title="03-27 08:28">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>sakuwa</b>: @SergioGasquez
+I tried to make a log cargo espflash flash --release -L serial --monitor but i...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          <li class="closed">
+
+              <p><a href="https://github.com/esp-rs/espflash/issues/411"><span class="octicons" title="closed issue"><span class="octicon dash"></span><span class="octicon dash"></span><span class="octicon closed issue"></span></span><b>espflash gets stuck at Connecting... in WSL Dev Container using USBIPD</b> #411</a>
+              [marco12en3]
+
+              <span class="label" style="--label-r:215;--label-g:58;--label-b:74;--label-h:353;--label-s:66;--label-l:53;">bug</span>
+                
+              </p><p>This happens when working in a VS Code dev container and using the following link:...</p><ul class="comments">
+                  <li>
+                      <p><a href="https://github.com/esp-rs/espflash/issues/411#issuecomment-2022646309" title="03-27 12:31">
+                        
+                          <span class="octicon comment" title="comment"></span>
+                        
+                        <b>soiamsoNG</b>: esp-idf-template create tempalte
+test espflash v3.0.0 inside devcontainer (podman)  on top...</a></p>
+                      
+                    </li>
+                  </ul>
+              </li>
+          </ul>
+      
+    </li>
+  </ul>
+
+<p class="footer">
+  created at 2024-03-28 01:13 by
+  <a href="https://pypi.org/project/dinghy/0.13.1">
+    dinghy
+    <span class="dinghy_version">0.13.1</span></a>.
+</p>
